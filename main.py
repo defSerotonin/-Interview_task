@@ -9,9 +9,17 @@ class SortMyList:
             first_position_value = first_position_value[0].split()
             temporary_lists_append.append(first_position_value)
         return temporary_lists_append
+        
+    def sort_values(self):
+        temporary_list_append = self.convert_value_list()
+        for i in range(len(temporary_list_append)-1):
+            for j in range(len(temporary_list_append)-1-i):
+                if temporary_list_append[j][0] > temporary_list_append[j+1][0]:
+                    temporary_list_append[j][0], temporary_list_append[j + 1][0] = temporary_list_append[j+1][0], temporary_list_append[j][0]
+        return temporary_list_append
 
     def compare_lists(self):
-        temporary_lists_append = self.convert_value_list()
+        temporary_lists_append = self.sort_values()
         list_sorted = []
         for i in range(0, len(temporary_lists_append)-1, 2):
             if int(temporary_lists_append[i][0]) > int(temporary_lists_append[i+1][0]):
@@ -33,5 +41,5 @@ entered_list = [['141413 anyInfoAboutValue.z1 11131'], ['1414487692 anyInfoAbout
 entered_list2 = [['14141 anyInfoAboutValue.z1 11131'], ['14142 anyInfoAboutValue.z0 1031'],
                  ['14141 anyInfoAboutValue.z3 1831'], ['14141 anyInfoAboutValue.x0 1531'],
                  ['14143 anyInfoAboutValue.z1 1231'], ['412838281 anyInfoAboutValue.z9 1241532']]
-sl = SortMyList(entered_list2)
+sl = SortMyList(entered_list)
 print(sl.compare_lists())
